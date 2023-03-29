@@ -21,5 +21,4 @@ public class B28G10_169_StepDefinitions {
         String actualResult = DB_Util.getFirstRowFirstColumn();
         Assert.assertEquals(actualResult,string);
     }
-
 }
