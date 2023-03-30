@@ -40,6 +40,12 @@ public class BookPage extends BasePage {
     @FindBy(xpath = "//input[@name='author']")
     public WebElement addBookAuthor;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addBookSaveChange;
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement addBookToastMessage;
+
 
 
     @FindBy(xpath = "//button[@type='submit']")

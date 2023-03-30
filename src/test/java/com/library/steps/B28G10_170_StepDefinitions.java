@@ -2,9 +2,11 @@ package com.library.steps;
 
 import com.library.pages.BookPage;
 import com.library.pages.LoginPage;
+import com.library.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -14,6 +16,11 @@ public class B28G10_170_StepDefinitions {
     BookPage bookPage = new BookPage();
     LoginPage loginPage = new LoginPage();
     WebDriver driver;
+    String expectedBookName;
+    String expectedISBN;
+    String expectedYear;
+    String expectedAuthor;
+    String expectedCategory;
 
 
     @When("the librarian click to add book")
@@ -28,6 +35,7 @@ public class B28G10_170_StepDefinitions {
 
         bookPage.addBookBookName.sendKeys(bookName);
         System.out.println("Entered book name");
+        expectedBookName = bookPage.addBookBookName.getAttribute("value");
 
     }
     @When("the librarian enter ISBN {string}")
@@ -35,6 +43,8 @@ public class B28G10_170_StepDefinitions {
 
         bookPage.addBookISBN.sendKeys(ISBN);
         System.out.println("Entered ISBN number");
+        expectedISBN = bookPage.addBookISBN.getAttribute("value");
+
 
 
     }
@@ -43,6 +53,7 @@ public class B28G10_170_StepDefinitions {
 
         bookPage.addBookYear.sendKeys(year);
         System.out.println("Entered year");
+        expectedYear = bookPage.addBookYear.getAttribute("value");
     }
 
     @When("the librarian enter author {string}")
@@ -50,24 +61,45 @@ public class B28G10_170_StepDefinitions {
 
         bookPage.addBookAuthor.sendKeys(author);
         System.out.println("Entered author");
+        expectedAuthor = bookPage.addBookAuthor.getAttribute("value");
 
     }
     @When("the librarian choose the book category {string}")
     public void the_librarian_choose_the_book_category(String bookCategory) {
 
         Select bookCategoryDropDown = new Select(driver.findElement(By.xpath("//select[@id='book_group_id']")));
+        bookCategoryDropDown.selectByVisibleText(bookCategory);
+        expectedCategory = bookCategory;
 
     }
     @When("the librarian click to save changes")
     public void the_librarian_click_to_save_changes() {
 
+        bookPage.addBookSaveChange.click();
+        System.out.println("Saved change");
+
     }
     @Then("verify {string} message is displayed")
-    public void verify_message_is_displayed(String string) {
+    public void verify_message_is_displayed(String ToastMessage) {
+
+        String actualMessage = bookPage.addBookToastMessage.getText();
+     //   String expectedMessage = ToastMessage;
+
+        Assert.assertEquals(actualMessage,ToastMessage);
 
     }
     @Then("verify {string} information must match with DB")
-    public void verify_information_must_match_with_db(String string) {
+    public void verify_information_must_match_with_db(String bookName) {
+
+        String query = "select books.name,isbn,year,author,book_category_id\n" +
+                "from books\n" +
+                "join book_categories bc on books.book_category_id = bc.id\n" +
+                "where books.name = '"+bookName+"'";
+        DB_Util.runQuery(query);
+
+
+
+
 
     }
 
