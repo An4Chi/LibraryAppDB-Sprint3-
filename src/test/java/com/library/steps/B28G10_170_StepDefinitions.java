@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Map;
+
 public class B28G10_170_StepDefinitions {
 
     BookPage bookPage = new BookPage();
@@ -96,6 +98,8 @@ public class B28G10_170_StepDefinitions {
                 "join book_categories bc on books.book_category_id = bc.id\n" +
                 "where books.name = '"+bookName+"'";
         DB_Util.runQuery(query);
+
+        Map<String,String> bookInfo = DB_Util.getRowMap(1);
 
 
 

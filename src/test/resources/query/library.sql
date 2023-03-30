@@ -24,8 +24,10 @@ order by 2 desc;
 
 -- US 06
 
-select id,name,author from books
-where name = 'Clean Code' and author='Robert C.Martin' order by id desc;
+select books.name,isbn,year,author,book_category_id
+from books
+         join book_categories bc on books.book_category_id = bc.id
+where books.name = 'Head First Java' ;
 
 -- US 07
 
@@ -36,9 +38,4 @@ where full_name='Test Student 1' and name='Head First Java' order by 3 desc;
 
 
 
-select * from books;
 
-select books.name,isbn,year,author,book_category_id
-from books
-join book_categories bc on books.book_category_id = bc.id
-where books.name = 'Head First Java' ;
