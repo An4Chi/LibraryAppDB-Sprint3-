@@ -24,7 +24,7 @@ order by 2 desc;
 
 -- US 06
 
-select books.name,isbn,year,author,book_category_id
+select books.name,isbn,year,author,bc.name
 from books
          join book_categories bc on books.book_category_id = bc.id
 where books.name = 'Head First Java' ;
