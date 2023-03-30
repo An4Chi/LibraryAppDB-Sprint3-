@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
@@ -21,6 +22,9 @@ public class B28G10_170_StepDefinitions {
     String expectedYear;
     String expectedAuthor;
     String expectedCategory;
+
+
+
 
     @When("the librarian click to add book")
     public void the_librarian_click_to_add_book() {
@@ -66,8 +70,9 @@ public class B28G10_170_StepDefinitions {
     @When("the librarian choose the book category {string}")
     public void the_librarian_choose_the_book_category(String bookCategory) {
 
-        Select bookCategoryDropDown = new Select(driver.findElement(By.xpath("//select[@id='book_group_id']")));
-        bookCategoryDropDown.selectByVisibleText(bookCategory);
+    //    WebElement bookCategoryDropdown = driver.findElement(By.xpath("//select[@id='book_group_id']"));
+        Select bookCategoryDropdown = new Select(driver.findElement(By.xpath("//select[@id='book_group_id']")));
+        bookCategoryDropdown.selectByVisibleText(bookCategory);
         expectedCategory = bookCategory;
 
     }
