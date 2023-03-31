@@ -2,6 +2,7 @@ package com.library.steps;
 
 import com.library.pages.BookPage;
 import com.library.pages.LoginPage;
+import com.library.utility.BrowserUtil;
 import com.library.utility.DB_Util;
 import io.cucumber.java.en.*;
 import io.cucumber.java.en.When;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
 
-public class B28G10_170_StepDefinitions {
+public class B28G10_170_StepDefinitions extends BookPage {
 
     BookPage bookPage = new BookPage();
     WebDriver driver;
@@ -71,9 +72,11 @@ public class B28G10_170_StepDefinitions {
     public void the_librarian_choose_the_book_category(String bookCategory) {
 
     //    WebElement bookCategoryDropdown = driver.findElement(By.xpath("//select[@id='book_group_id']"));
-        Select bookCategoryDropdown = new Select(driver.findElement(By.xpath("//select[@id='book_group_id']")));
+        Select bookCategoryDropdown = new Select(categoryDropdown);
         bookCategoryDropdown.selectByVisibleText(bookCategory);
+        System.out.println("Book category selected");
         expectedCategory = bookCategory;
+        BrowserUtil.waitFor(2);
 
     }
     @When("the librarian click to save changes")
