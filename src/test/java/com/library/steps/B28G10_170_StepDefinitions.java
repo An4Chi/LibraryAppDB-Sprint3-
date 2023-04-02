@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
-
+/*
 public class B28G10_170_StepDefinitions extends BookPage {
 
     BookPage bookPage = new BookPage();
@@ -38,7 +38,6 @@ public class B28G10_170_StepDefinitions extends BookPage {
     public void the_librarian_enter_book_name(String bookName) {
 
         bookPage.addBookBookName.sendKeys(bookName);
-        System.out.println("Entered book name");
         expectedBookName = bookName;
         System.out.println("expectedBookName = " + expectedBookName);
 
@@ -47,7 +46,6 @@ public class B28G10_170_StepDefinitions extends BookPage {
     public void the_librarian_enter_isbn(String ISBN) {
 
         bookPage.addBookISBN.sendKeys(ISBN);
-        System.out.println("Entered ISBN number");
         expectedISBN = ISBN;
         System.out.println("expectedISBN = " + expectedISBN);
 
@@ -57,16 +55,16 @@ public class B28G10_170_StepDefinitions extends BookPage {
     public void the_librarian_enter_year(String year) {
 
         bookPage.addBookYear.sendKeys(year);
-        System.out.println("Entered year");
-        expectedYear = bookPage.addBookYear.getAttribute("value");
+        expectedYear = year;
+        System.out.println("expectedYear = " + expectedYear);
     }
 
     @When("the librarian enter author {string}")
     public void the_librarian_enter_author(String author) {
 
         bookPage.addBookAuthor.sendKeys(author);
-        System.out.println("Entered author");
-        expectedAuthor = bookPage.addBookAuthor.getAttribute("value");
+        expectedAuthor = author;
+        System.out.println("expectedAuthor = " + expectedAuthor);
 
     }
     @When("the librarian choose the book category {string}")
@@ -75,8 +73,8 @@ public class B28G10_170_StepDefinitions extends BookPage {
     //    WebElement bookCategoryDropdown = driver.findElement(By.xpath("//select[@id='book_group_id']"));
         Select bookCategoryDropdown = new Select(categoryDropdown);
         bookCategoryDropdown.selectByVisibleText(bookCategory);
-        System.out.println("Book category selected");
         expectedCategory = bookCategory;
+        System.out.println("expectedCategory = " + expectedCategory);
         BrowserUtil.waitFor(2);
 
     }
@@ -92,24 +90,29 @@ public class B28G10_170_StepDefinitions extends BookPage {
 
         String actualMessage = bookPage.addBookToastMessage.getText();
      //   String expectedMessage = ToastMessage;
-
         Assert.assertEquals(actualMessage,ToastMessage);
 
     }
     @Then("verify {string} information must match with DB")
     public void verify_information_must_match_with_db(String bookName) {
 
-        String query = "select books.name,isbn,year,author,bc.name category_name" + "from books" + "join book_categories bc on books.book_category_id = bc.id" + "where books.name ='"+bookName+"'";
+        String query = "select books.name book_name,isbn,year,author,bc.name category_name\n" +
+                "from books\n" +
+                "         join book_categories bc on books.book_category_id = bc.id\n" +
+                "where books.name ='"+bookName+"'";
         DB_Util.runQuery(query);
 
-        Map<String,String> bookInfo = DB_Util.getRowMap(1);
+        Map<String, String> bookInfo = DB_Util.getRowMap(1);
         System.out.println("bookInfo = " + bookInfo);
 
-        String actualBookName = bookInfo.get("name");
+        String actualBookName = bookInfo.get("book_name");
         System.out.println("actualBookName = " + actualBookName);
         String actualISBN = bookInfo.get("isbn");
+        System.out.println("actualISBN = " + actualISBN);
         String actualYear = bookInfo.get("year");
+        System.out.println("actualYear = " + actualYear);
         String actualAuthor = bookInfo.get("author");
+        System.out.println("actualAuthor = " + actualAuthor);
         String actualCategory = bookInfo.get("category_name");
         System.out.println("actualCategory = " + actualCategory);
 
@@ -130,3 +133,6 @@ public class B28G10_170_StepDefinitions extends BookPage {
 
 
 }
+
+
+ */
