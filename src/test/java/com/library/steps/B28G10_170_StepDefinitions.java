@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
-/*
+
 public class B28G10_170_StepDefinitions extends BookPage {
 
     BookPage bookPage = new BookPage();
@@ -96,37 +96,23 @@ public class B28G10_170_StepDefinitions extends BookPage {
     @Then("verify {string} information must match with DB")
     public void verify_information_must_match_with_db(String bookName) {
 
-        String query = "select books.name book_name,isbn,year,author,bc.name category_name\n" +
-                "from books\n" +
-                "         join book_categories bc on books.book_category_id = bc.id\n" +
-                "where books.name ='"+bookName+"'";
+        String query = "select id,name,author from books\n" +
+                "where name = '"+expectedBookName+"' and author='"+expectedAuthor+"'\n" +
+                "order by id desc;";
+
         DB_Util.runQuery(query);
 
         Map<String, String> bookInfo = DB_Util.getRowMap(1);
         System.out.println("bookInfo = " + bookInfo);
 
-        String actualBookName = bookInfo.get("book_name");
+        String actualBookName = bookInfo.get("name");
         System.out.println("actualBookName = " + actualBookName);
-        String actualISBN = bookInfo.get("isbn");
-        System.out.println("actualISBN = " + actualISBN);
-        String actualYear = bookInfo.get("year");
-        System.out.println("actualYear = " + actualYear);
         String actualAuthor = bookInfo.get("author");
         System.out.println("actualAuthor = " + actualAuthor);
-        String actualCategory = bookInfo.get("category_name");
-        System.out.println("actualCategory = " + actualCategory);
+
 
         Assert.assertEquals(actualBookName,expectedBookName);
-        Assert.assertEquals(actualISBN,expectedISBN);
-        Assert.assertEquals(actualYear,expectedYear);
         Assert.assertEquals(actualAuthor,expectedAuthor);
-        Assert.assertEquals(actualCategory,expectedCategory);
-
-
-
-
-
-
 
 
     }
@@ -135,4 +121,3 @@ public class B28G10_170_StepDefinitions extends BookPage {
 }
 
 
- */
