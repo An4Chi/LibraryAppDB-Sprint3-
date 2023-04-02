@@ -1,6 +1,5 @@
 package com.library.steps;
 
-import com.library.pages.BasePage;
 import com.library.pages.BookPage;
 import com.library.utility.DB_Util;
 import io.cucumber.java.en.Given;
@@ -10,7 +9,7 @@ import org.junit.Assert;
 
 import java.util.Map;
 
-public class US04_StepDef extends BookPage{
+public class B28G10_176_StepDefinitions extends BookPage{
 
     String classBookName;
 
