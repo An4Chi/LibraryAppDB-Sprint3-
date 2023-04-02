@@ -28,6 +28,26 @@ public class BookPage extends BasePage {
     @FindBy(xpath = "//div[@class='portlet-title']//a")
     public WebElement addBook;
 
+    @FindBy(xpath = "//input[@placeholder='Book Name']")
+    public WebElement addBookBookName;
+
+    @FindBy(xpath = "//input[@name='isbn']")
+    public WebElement addBookISBN;
+
+    @FindBy(xpath = "//input[@name='year']")
+    public WebElement addBookYear;
+
+    @FindBy(xpath = "//input[@name='author']")
+    public WebElement addBookAuthor;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addBookSaveChange;
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement addBookToastMessage;
+
+
+
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement saveChanges;
 
@@ -40,7 +60,7 @@ public class BookPage extends BasePage {
     @FindBy(name = "isbn")
     public WebElement isbn;
 
-    @FindBy(id = "book_group_id")
+    @FindBy(xpath = "//select[@id='book_group_id']")
     public WebElement categoryDropdown;
 
 
