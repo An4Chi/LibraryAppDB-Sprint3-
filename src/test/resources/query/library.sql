@@ -22,19 +22,12 @@ select bc.name,count(*) from book_borrow bb
 group by name
 order by 2 desc;
 
-select books.name,books.isbn,books.year,books.author,bc.name
-from books join book_categories bc on books.book_category_id = bc.id
-where books.name = 'Head First Java';
+
+-- US 06
 
 select id,name,author from books
 where name = 'Clean Code' and author='Robert C.Martin'
 order by id desc;
-
-
-select DISTINCT book_category_id from books;
-
-select * from books order by book_category_id desc ;
-
 
 
 -- US 07
