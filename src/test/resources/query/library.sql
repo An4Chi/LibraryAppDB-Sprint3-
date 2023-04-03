@@ -1,7 +1,8 @@
 
 -- US 01
 
-select count(distinct id) from users;
+select *
+from (select count(distinct id) from users) uc;
 
 -- US 02
 
