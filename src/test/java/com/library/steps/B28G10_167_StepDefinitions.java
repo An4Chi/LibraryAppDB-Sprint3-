@@ -31,7 +31,7 @@ public class B28G10_167_StepDefinitions extends BookPage {
         List<String> expectedCategoryList = DB_Util.getColumnDataAsList("name");
         System.out.println("expectedCategoryList = " + expectedCategoryList);
 
-        Assert.assertEquals(actualCategoryList, expectedCategoryList);
+        Assert.assertEquals(expectedCategoryList, actualCategoryList);
 
 
     }
